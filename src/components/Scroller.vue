@@ -26,6 +26,7 @@
 
       <slot></slot>
 
+
       <div v-if="showInfiniteLayer" class="loading-layer">
         <span class="spinner-holder" :class="{'active': showLoading}">
           <slot name="infinite-spinner">
@@ -33,15 +34,21 @@
           </slot>
         </span>
 
+
         <div class="no-data-text"
-          :class="{'active': !showLoading && loadingState == 2}" :style="{color: loadingLayerColor}" 
-          v-text="noDataText">
+          :class="{'active': !showLoading && loadingState == 2}" :style="{color: loadingLayerColor}"
+          >
+          <slot name="no-data-text">
+             {{noDataText}}
+          </slot>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="css" scoped>
+
+
 
   ._v-container {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -83,6 +90,7 @@
     font-size: 16px;
     color: #AAA;
   }
+
 
   ._v-container > ._v-content > .loading-layer {
     width: 100%;
